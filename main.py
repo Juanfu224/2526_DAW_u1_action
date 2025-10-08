@@ -1,2 +1,11 @@
 def saludo(nombre: str) -> str:
-    return f"Hola, {nombre}!" # Cambio para forzar error. Para que no falle: f"Hola, {nombre}!"
+    """
+    Genera un saludo personalizado.
+
+    Args:
+        nombre (str): El nombre de la persona a saludar.
+
+    Returns:
+        str: Un saludo en forma de cadena que incluye el nombre proporcionado.
+    """
+    return f"Hola, {nombre}!"
