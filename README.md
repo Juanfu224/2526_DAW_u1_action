@@ -16,10 +16,25 @@ En este caso he implementado las siguientes mejoras:
 - Historial de resultados en el README: en lugar de sobrescribir, añado nuevas líneas con fecha/hora.
 
 ## 2º PARTE
+Sphinx es un framework que nos ayudará a construir la documentación de nuestros proyectos de Python. Este programa lo que hace es transformar archivos reST en archivos HTML o pdf, dándoles un formato más amigable gracias al uso intero de templates.
+
+Lo que queremos con los docstrings que escribimos es que Sphinx los entienda y logre renderizar apropiadamente un archivo en formato HTML o PDF que sea agradable de leer. Para que esto suceda debemos escribir nuestros docstrings en uno de los formatos que Sphinx entiende. En este caso he utilizado reStructuredText (reST)
+
 Para instalar Sphinx en Linux y poderlo utilizar en el proyecto de Python, he ejecutado el siguiente comando:
 ```
 sudo apt install python3 python3-pip python3-sphinx
 ```
+
+Al comenzar, suponiendo que estamos en el directorio root de nuestro proyecto, nos cambiamos al directorio docs y ejecutamos el siguiente comando
+```
+sphinx-quickstart
+```
+![sphinx-quickstart](https://github.com/Juanfu224/2526_DAW_u1_action/blob/ee62e4b93cfc37f115eff96e518018f0d1dc9dce/images/sphinx-quickstart.png)
+
+Dentro de docs tiene que haber la siguente estructura:
+![estructura_docs](https://github.com/Juanfu224/2526_DAW_u1_action/blob/f617396b1ff56e66878aa3d1207de91c499f318a/images/estructura_docs.png)
+
+
 
 ## Estado de los tests
 ✅ 2025-09-30 22:55 Tests correctos
