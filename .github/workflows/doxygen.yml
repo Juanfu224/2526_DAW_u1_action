@@ -14,8 +14,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
       
-      - name: Instala Graphviz para doxygen
-        run: sudo apt install -y graphviz
+      - name: Instala Graphviz y Doxygen
+        run: sudo apt install -y graphviz doxygen
 
       - name: Generar documentación con Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
