@@ -26,8 +26,8 @@ jobs:
       - name: Ejecutar script de tests y actualizar README
         run: python update_readme.py
 
-      - name: Commit automático de la documentación Doxygen
+      - name: Commit automático del README actualizado
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update readme with test results"
-          file_pattern: ./README.md
+          commit_message: "Update README with test results"
+          file_pattern: README.md
