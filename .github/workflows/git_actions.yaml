@@ -41,9 +41,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Generar documentación Doxygen
-        uses: mattnotmitt/doxygen-action@v1.9.5
+        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
         with:
-          doxyfile-path: 'docs/doxyfile'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          config_file: docs/Doxyfile
+          doxygen_version: 1.9.8
 
       - name: Pull ultimos cambios
         run: git pull
