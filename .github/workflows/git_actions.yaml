@@ -43,7 +43,7 @@ jobs:
       - name: Generar documentación Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
-          doxyfile-path: 'docs/Doxygen'
+          doxyfile-path: 'docs/doxyfile'
 
       - name: Pull ultimos cambios
         run: git pull
