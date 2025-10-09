@@ -2,7 +2,7 @@ name: Generar y publicar documentación Doxygen
 
 on:
   workflow_run:
-    workflows: "python_tests_actualizar_readme"
+    workflows: "CI con AutoCommit"
     types: completed
 
 permissions:
