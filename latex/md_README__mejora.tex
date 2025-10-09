@@ -1,0 +1,20 @@
+\chapter{README\+\_\+mejora}
+\hypertarget{md_README__mejora}{}\label{md_README__mejora}\index{README\_mejora@{README\_mejora}}
+Mi proyecto contiene varios archivos\+:
+\begin{DoxyItemize}
+\item Un programa principal (main.\+py).
+\item Un test unitario (test\+\_\+main.\+py).
+\item Un script (update\+\_\+readme.\+py) que ejecuta los tests y modifica el README.\+md, con el resultado de ejecutar los test.
+\item Un script básico (ci.\+yml) que ejecuta y hace commit automático con git-\/auto-\/commit-\/action.
+\end{DoxyItemize}
+
+Cuando se hago un push en main el workflow ejecuta el script en Python. El script corre los tests y modifica el README.\+md añadiendo una de los siguientes resultados\+:
+
+✅ Tests correctos
+
+❌ Tests fallidos
+
+En este caso he implementado las siguientes mejoras\+:
+\begin{DoxyItemize}
+\item Historial de resultados en el README\+: en lugar de sobrescribir, añado nuevas líneas con fecha/hora. 
+\end{DoxyItemize}
