@@ -37,6 +37,8 @@ Dentro de docs tiene que haber la siguente estructura:
 
 
 ## Estado de los tests
+✅ 2025-10-09 22:00 Tests correctos
+
 ✅ 2025-10-09 21:56 Tests correctos
 
 ✅ 2025-10-09 21:54 Tests correctos
