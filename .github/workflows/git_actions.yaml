@@ -31,6 +31,10 @@ jobs:
         with:
           commit_message: "Actualización README con resultados de tests"
           file_pattern: "README.md"
+      
+      - name: Pull ultimos cambios
+        run: git pull --rebase
+
 
   actualizar-documentacion:
     runs-on: ubuntu-latest
