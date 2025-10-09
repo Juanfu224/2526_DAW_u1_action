@@ -24,4 +24,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update Doxygen documentation"
-          file_pattern: docs/html/**
+          file_pattern: docs/**
