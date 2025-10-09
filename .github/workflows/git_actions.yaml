@@ -40,14 +40,21 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Instalar Doxygen y Graphviz
+      - name: Instalar Doxygen y Graphviz y TeX Live(para PDF)
         run: |
           sudo apt-get update
-          sudo apt-get install -y doxygen graphviz
+          sudo apt-get install -y doxygen graphviz texlive-full
 
       - name: Generar documentación Doxygen
         run: doxygen docs/Doxyfile
 
+      - name: Compilar el PDF
+        run: |
+          cd docs/latex
+          make
+          cd ../..
+          mv docs/latex/refman.pdf docs/Documentacion.pdf
+                  
       - name: Pull ultimos cambios
         run: |
           git config --global user.name 'github-actions[bot]'
