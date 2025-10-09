@@ -48,9 +48,9 @@ jobs:
       - name: Generar documentación Doxygen
         run: doxygen docs/Doxyfile
 
-       - name: Pull ultimos cambios
+      - name: Pull ultimos cambios
         run: |
-          git config --global user.name 'github-actions[bot]'
+          git config --global user.name "github-actions[bot]"
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git pull
 
