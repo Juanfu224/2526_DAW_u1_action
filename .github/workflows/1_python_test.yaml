@@ -9,7 +9,7 @@ permissions:
   contents: write # 👈 IMPORTANTE: permite que el bot pueda hacer commits/push
 
 jobs:
-  test-and-update:
+  python_tests_actualizar_readme:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -25,3 +25,10 @@ jobs:
 
       - name: Ejecutar script de tests y actualizar README
         run: python update_readme.py
+
+        - name: Commit automático de la documentación Doxygen
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update readme with test results"
+          file_pattern: ./README.md
+        run: git pull

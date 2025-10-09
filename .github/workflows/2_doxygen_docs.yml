@@ -1,8 +1,9 @@
 name: Generar y publicar documentación Doxygen
 
 on:
-  push:
-    branches: [Parte-2]
+  workflow_run:
+    workflows: "python_tests_actualizar_readme"
+    types: completed
 
 permissions:
   contents: write
@@ -24,4 +25,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update Doxygen documentation"
-          file_pattern: docs/**
+          file_pattern: ./docs/**
