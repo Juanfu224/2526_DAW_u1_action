@@ -49,10 +49,7 @@ jobs:
         run: doxygen docs/Doxyfile
 
       - name: Pull ultimos cambios
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pull
+        run: git pull
 
       - name: Commit automático de documentación
         uses: stefanzweifel/git-auto-commit-action@v5
