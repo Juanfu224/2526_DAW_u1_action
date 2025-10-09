@@ -15,7 +15,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Generar documentación con Doxygen
-        run: doxygen docs/Doxyfile
+        run: |
+          sudo apt install doxygen 
+          doxygen docs/Doxyfile
 
       - name: Commit automático de la documentación Doxygen
         uses: stefanzweifel/git-auto-commit-action@v5
