@@ -31,4 +31,3 @@ jobs:
         with:
           commit_message: "Update readme with test results"
           file_pattern: ./README.md
-        run: git pull
