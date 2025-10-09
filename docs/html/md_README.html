@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DAW_U1_ACTION: Mi Proyecto con GitHub Actions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">DAW_U1_ACTION
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div><div class="header">
+  <div class="headertitle"><div class="title">Mi Proyecto con GitHub Actions</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a>Mi proyecto contiene varios archivos:</p><ul>
+<li>Un programa principal (<a class="el" href="main_8py.html">main.py</a>).</li>
+<li>Un test unitario (<a class="el" href="test__main_8py.html">test_main.py</a>).</li>
+<li>Un script (<a class="el" href="update__readme_8py.html">update_readme.py</a>) que ejecuta los tests y modifica el <a class="el" href="README_8md.html">README.md</a>, con el resultado de ejecutar los test.</li>
+<li>Un script básico (ci.yml) que ejecuta y hace commit automático con git-auto-commit-action.</li>
+</ul>
+<p>Cuando se hago un push en main el workflow ejecuta el script en Python. El script corre los tests y modifica el <a class="el" href="README_8md.html">README.md</a> añadiendo una de los siguientes resultados:</p>
+<p>✅ Tests correctos</p>
+<p>❌ Tests fallidos</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+1º PARTE</h1>
+<p>En este caso he implementado las siguientes mejoras:</p><ul>
+<li>Historial de resultados en el README: en lugar de sobrescribir, añado nuevas líneas con fecha/hora.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+2º PARTE</h1>
+<p>Sphinx es un framework que nos ayudará a construir la documentación de nuestros proyectos de Python. Este programa lo que hace es transformar archivos reST en archivos HTML o pdf, dándoles un formato más amigable gracias al uso intero de templates.</p>
+<p>Lo que queremos con los docstrings que escribimos es que Sphinx los entienda y logre renderizar apropiadamente un archivo en formato HTML o PDF que sea agradable de leer. Para que esto suceda debemos escribir nuestros docstrings en uno de los formatos que Sphinx entiende. En este caso he utilizado reStructuredText (reST)</p>
+<p>Para instalar Sphinx en Linux y poderlo utilizar en el proyecto de Python, he ejecutado el siguiente comando: </p><div class="fragment"><div class="line">sudo apt install python3 python3-pip python3-sphinx</div>
+</div><!-- fragment --><p>Al comenzar, suponiendo que estamos en el directorio root de nuestro proyecto, nos cambiamos al directorio docs y ejecutamos el siguiente comando </p><div class="fragment"><div class="line">sphinx-quickstart</div>
+</div><!-- fragment --><p> <img src="https://github.com/Juanfu224/2526_DAW_u1_action/blob/ee62e4b93cfc37f115eff96e518018f0d1dc9dce/images/sphinx-quickstart.png" alt="sphinx-quickstart" class="inline"/></p>
+<p>Dentro de docs tiene que haber la siguente estructura: <img src="https://github.com/Juanfu224/2526_DAW_u1_action/blob/f617396b1ff56e66878aa3d1207de91c499f318a/images/estructura_docs.png" alt="estructura_docs" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Estado de los tests</h1>
+<p>✅ 2025-10-09 19:24 Tests correctos</p>
+<p>✅ 2025-10-09 19:12 Tests correctos</p>
+<p>✅ 2025-10-09 19:07 Tests correctos</p>
+<p>✅ 2025-10-09 19:01 Tests correctos</p>
+<p>✅ 2025-10-09 18:58 Tests correctos</p>
+<p>✅ 2025-10-09 18:50 Tests correctos</p>
+<p>✅ 2025-10-09 18:13 Tests correctos</p>
+<p>✅ 2025-10-09 18:09 Tests correctos</p>
+<p>✅ 2025-10-09 18:05 Tests correctos</p>
+<p>✅ 2025-10-09 17:53 Tests correctos</p>
+<p>✅ 2025-10-09 09:42 Tests correctos</p>
+<p>✅ 2025-10-09 09:37 Tests correctos</p>
+<p>✅ 2025-10-09 08:51 Tests correctos</p>
+<p>✅ 2025-10-09 08:45 Tests correctos</p>
+<p>✅ 2025-10-09 08:30 Tests correctos</p>
+<p>✅ 2025-09-30 22:55 Tests correctos</p>
+<p>❌ 2025-09-30 22:54 Tests fallidos</p>
+<p>❌ 2025-09-30 21:25 Tests fallidos</p>
+<p>✅ 2025-09-30 21:23 Tests correctos</p>
+<p>✅ 2025-09-30 18:38 Tests correctos ✅ Tests correctos </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
