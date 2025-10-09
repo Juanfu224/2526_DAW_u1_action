@@ -1,4 +1,4 @@
-name: CI con AutoCommit
+name: CI + Doxygen
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  python_tests_actualizar_readme:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -26,8 +26,16 @@ jobs:
       - name: Ejecutar script de tests y actualizar README
         run: python update_readme.py
 
-      - name: Commit automático del README actualizado
+      - name: Instalar Doxygen y Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz
+
+      - name: Generar documentación Doxygen
+        run: doxygen docs/Doxyfile
+
+      - name: Commit automático de README y documentación
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update README with test results"
-          file_pattern: README.md
+          commit_message: "Actualizacion README y documentacion Doxygen"
+          file_pattern: "README.md docs/**"
