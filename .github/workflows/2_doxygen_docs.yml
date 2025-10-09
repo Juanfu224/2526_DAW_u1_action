@@ -3,8 +3,7 @@ name: Generar y publicar documentación Doxygen
 on:
   workflow_run:
     workflows: ["CI con AutoCommit"]
-    types:
-      - success
+    types: [success]
 
 permissions:
   contents: write
