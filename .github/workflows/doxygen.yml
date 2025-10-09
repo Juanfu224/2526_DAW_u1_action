@@ -16,12 +16,12 @@ jobs:
 
       - name: Instalar Doxygen y Graphviz
         run: sudo apt install doxygen graphviz
-      
+
       - name: Generar documentación Doxygen
         run: doxygen docs/Doxyfile
 
       - name: Commit automático de la documentación Doxygen
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Actualizacion de docs/html con documentación la documentación generada por Doxygen"
-          file_pattern: README.md
+          commit_message: "Update Doxygen documentation"
+          file_pattern: docs/html/**
