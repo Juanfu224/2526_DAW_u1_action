@@ -17,5 +17,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: Parte-2
           folder: docs/html
-          config_file: docs/Doxyfile
+          config_file: Doxyfile
           doxygen_version: 1.9.8
