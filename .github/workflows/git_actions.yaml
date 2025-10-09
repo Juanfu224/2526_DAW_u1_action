@@ -40,15 +40,19 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Instalar Doxygen y Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz
+
       - name: Generar documentación Doxygen
-        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          config_file: docs/Doxyfile
-          doxygen_version: 1.9.8
+        run: doxygen docs/Doxyfile
 
       - name: Pull ultimos cambios
-        run: git pull origin Parte-2
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git pull
 
       - name: Commit automático de documentación
         uses: stefanzweifel/git-auto-commit-action@v5
