@@ -15,10 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Generar documentación con Doxygen
-        uses: mattnotmitt/doxygen-action@v1.9.5
-        with:
-          doxyfile-path: ./docs/Doxyfile
-          working-directory: .
+        run: doxygen docs/Doxyfile
 
       - name: Commit automático de la documentación Doxygen
         uses: stefanzweifel/git-auto-commit-action@v5
