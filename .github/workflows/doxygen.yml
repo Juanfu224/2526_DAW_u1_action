@@ -2,7 +2,7 @@ name: Doxygen GitHub Pages
 
 on:
   push:
-    branches: [Parte-2] # O añade más ramas si lo necesitas
+    branches: [Parte-2]
 
 permissions:
   contents: write
@@ -11,10 +11,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
+      
+      - name: Instala Graphviz para doxygen
+        run: sudo apt install -y graphviz
 
-      - name: Generate Doxygen documentation
+      - name: Generar documentación con Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
           working-directory: "."
