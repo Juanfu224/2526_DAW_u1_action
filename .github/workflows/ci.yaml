@@ -2,7 +2,7 @@ name: CI con AutoCommit
 
 on:
   push:
-    branches: ["main"]
+    branches: ["Parte-2"]
   workflow_dispatch:
 
 permissions:
