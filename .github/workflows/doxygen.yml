@@ -11,7 +11,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
       - name: Generar documentación con Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
@@ -22,5 +23,5 @@ jobs:
       - name: Commit automático de la documentación Doxygen
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Actualizacion de docs/html con documentación la documentación generada por Doxygen "
+          commit_message: "Actualizacion de docs/html con documentación la documentación generada por Doxygen"
           file_pattern: README.md
