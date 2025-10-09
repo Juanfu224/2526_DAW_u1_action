@@ -1,4 +1,4 @@
-name: Doxygen GitHub Pages
+name: Generar y publicar documentación Doxygen
 
 on:
   push:
@@ -8,17 +8,19 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-      
-      - name: Instala Graphviz y Doxygen
-        run: sudo apt install -y graphviz doxygen
+      - uses: actions/checkout@v4
 
       - name: Generar documentación con Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
-          working-directory: "."
-          doxyfile-path: "docs/Doxyfile"
+          doxyfile-path: ./docs/Doxyfile
+          working-directory: .
+
+      - name: Commit automático de la documentación Doxygen
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Actualizacion de docs/html con documentación la documentación generada por Doxygen "
+          file_pattern: README.md
