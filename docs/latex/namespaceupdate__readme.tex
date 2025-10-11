@@ -1,0 +1,61 @@
+\doxysection{Referencia del espacio de nombres update\+\_\+readme}
+\hypertarget{namespaceupdate__readme}{}\label{namespaceupdate__readme}\index{update\_readme@{update\_readme}}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceupdate__readme_ac9c5ee14c84ed7490abd2cc3aff9f47b}{run\+\_\+tests}} ()
+\item 
+\mbox{\hyperlink{namespaceupdate__readme_a4ee0c6f9c6e3ec4f05ed63de3c8c5479}{update\+\_\+readme}} (str \mbox{\hyperlink{namespaceupdate__readme_acc559aa006457f50cc12171468794a83}{status}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceupdate__readme_acc559aa006457f50cc12171468794a83}{status}} = \mbox{\hyperlink{namespaceupdate__readme_ac9c5ee14c84ed7490abd2cc3aff9f47b}{run\+\_\+tests}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{namespaceupdate__readme_ac9c5ee14c84ed7490abd2cc3aff9f47b}\label{namespaceupdate__readme_ac9c5ee14c84ed7490abd2cc3aff9f47b} 
+\index{update\_readme@{update\_readme}!run\_tests@{run\_tests}}
+\index{run\_tests@{run\_tests}!update\_readme@{update\_readme}}
+\doxysubsubsection{\texorpdfstring{run\_tests()}{run\_tests()}}
+{\footnotesize\ttfamily update\+\_\+readme.\+run\+\_\+tests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ejecuta pytest y devuelve un mensaje con el resultado y la fecha/hora.
+
+Ejecuta el comando ``pytest -q`` usando :func:`subprocess.check_call`.  
+Si pytest devuelve código de salida ``0``, se considera que los tests son correctos.  
+Cualquier otra salida provoca que se considere que los tests han fallado.
+
+:returns: Mensaje con emoji y marca de tiempo en formato ``YYYY-MM-DD HH:MM``.  
+          Por ejemplo:  
+          ``✅ 2025-10-08 12:34 Tests correctos`` o  
+          ``❌ 2025-10-08 12:34 Tests fallidos``.
+:rtype: str
+\end{DoxyVerb}
+ \Hypertarget{namespaceupdate__readme_a4ee0c6f9c6e3ec4f05ed63de3c8c5479}\label{namespaceupdate__readme_a4ee0c6f9c6e3ec4f05ed63de3c8c5479} 
+\index{update\_readme@{update\_readme}!update\_readme@{update\_readme}}
+\index{update\_readme@{update\_readme}!update\_readme@{update\_readme}}
+\doxysubsubsection{\texorpdfstring{update\_readme()}{update\_readme()}}
+{\footnotesize\ttfamily update\+\_\+readme.\+update\+\_\+readme (\begin{DoxyParamCaption}\item[{str}]{status }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Actualiza la sección ``## Estado de los tests`` en README.md con el estado dado.
+
+Lee el contenido de ``README.md``, busca la línea que contiene exactamente
+``## Estado de los tests`` (ignorando espacios alrededor) y añade la línea de
+estado ``status`` seguida de una línea en blanco inmediatamente después de ese encabezado.  
+Finalmente, reescribe ``README.md`` con el contenido modificado.
+
+:param str status: Texto de estado que se insertará (se añadirá un salto de línea adicional después del texto).
+:raises FileNotFoundError: Si ``README.md`` no existe en el directorio actual.
+:raises OSError: Si ocurre algún otro error de E/S al leer o escribir el archivo.
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{namespaceupdate__readme_acc559aa006457f50cc12171468794a83}\label{namespaceupdate__readme_acc559aa006457f50cc12171468794a83} 
+\index{update\_readme@{update\_readme}!status@{status}}
+\index{status@{status}!update\_readme@{update\_readme}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily update\+\_\+readme.\+status = \mbox{\hyperlink{namespaceupdate__readme_ac9c5ee14c84ed7490abd2cc3aff9f47b}{run\+\_\+tests}}()}
+
