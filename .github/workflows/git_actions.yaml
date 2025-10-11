@@ -1,4 +1,4 @@
-name: CI + Doxygen
+name: CI + Doxygen + MkDocs
 
 on:
   push:
@@ -9,6 +9,7 @@ permissions:
   contents: write
 
 jobs:
+  # Job para ejecutar tests y actualizar README
   actualizar-tests-readme:
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +22,7 @@ jobs:
           python-version: "3.12"
 
       - name: Instalar dependencias
-        run: pip install pytest
+        run: sudo apt install python3-pytest
 
       - name: Ejecutar script de tests y actualizar README
         run: python update_readme.py
@@ -32,7 +33,7 @@ jobs:
           commit_message: "Actualización README con resultados de tests"
           file_pattern: "README.md"
 
-
+  # Job para generar y actualizar documentación Doxygen
   actualizar-documentacion:
     runs-on: ubuntu-latest
     needs: actualizar-tests-readme
@@ -42,18 +43,11 @@ jobs:
 
       - name: Instalar Doxygen y Graphviz y TeX Live(para PDF)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y doxygen graphviz texlive-full
+          sudo apt update
+          sudo apt install -y doxygen graphviz
 
       - name: Generar documentación Doxygen
         run: doxygen docs/Doxyfile
-
-      - name: Compilar el PDF
-        run: |
-          cd docs/latex
-          make
-          cd ../..
-          mv docs/latex/refman.pdf docs/Documentacion.pdf
                   
       - name: Pull ultimos cambios
         run: |
@@ -61,8 +55,48 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git pull
 
-      - name: Commit automático de documentación
+      - name: Commit automático de documentación de Doxygen
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Actualización documentación Doxygen"
           file_pattern: "docs/**"
+  
+  # Job para generar y actualizar documentación MkDocs
+    actualizar-mkdocs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install mkdocs-material mkdocs-blogging-plugin
+
+      - name: Desplegar la documentación
+        run: mkdocs Parte-2 --force --verbose
+
+      - name: Desplegar la carpeta slides a Parte-2
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: Parte-2
+          publish_dir: docs/mkdocs
+          destination_dir: docs/mkdocs
+          keep_files: true
+    
+      - name: Pull ultimos cambios
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git pull
+
+      - name: Commit automático de documentación MkDocs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Actualización de documentación MkDocs"
+          file_pattern: "docs/mkdocs/**"
+    
