@@ -75,4 +75,4 @@ jobs:
 
       - name: Generar documentación Markdown con pdoc
         run: |
-          pdoc -d markdown -o docs main test_main update_readme
+          pdoc -d markdown -o docs ./main.py ./test_main.py ./update_readme.py
