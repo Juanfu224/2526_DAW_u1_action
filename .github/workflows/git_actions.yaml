@@ -47,7 +47,7 @@ jobs:
 
       - name: Generar documentación Doxygen
         run: doxygen docs/Doxyfile
-                  
+
       - name: Pull ultimos cambios
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -59,7 +59,7 @@ jobs:
         with:
           commit_message: "Actualización documentación Doxygen"
           file_pattern: "docs/**"
-  
+
   # Job para generar y actualizar documentación MkDocs
   actualizar-markdown:
     runs-on: ubuntu-latest
@@ -67,12 +67,12 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Instalar dependencias
         run: |
           pip install pdoc
-          
+
       - name: Generar documentación Markdown con pdoc
         run: |
-          pdoc --output-dir docs --format markdown markdown_modulo
+          pdoc -d markdown -o docs main test_main update_readme
