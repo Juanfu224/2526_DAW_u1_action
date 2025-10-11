@@ -2,7 +2,7 @@ name: CI + Doxygen + MkDocs
 
 on:
   push:
-    branches: ["Parte-2"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -70,9 +70,8 @@ jobs:
           python-version: "3.12"
 
       - name: Instalar dependencias
-        run: |
-          pip install pdoc
+        run: pip install pdoc
 
-      - name: Generar documentación Markdown con pdoc
-        run: |
-          pdoc -d markdown -o docs ./main.py
+      - name: Generar documentación con pdoc
+        run: pdoc --output-dir docs main
+
