@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
@@ -39,8 +39,7 @@ jobs:
     needs: actualizar-tests-readme
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v4
       - name: Instalar Doxygen y Graphviz y TeX Live(para PDF)
         run: |
           sudo apt update
@@ -62,40 +61,18 @@ jobs:
           file_pattern: "docs/**"
   
   # Job para generar y actualizar documentación MkDocs
-  actualizar-mkdocs:
+  actualizar-markdown:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
       - name: Configurar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
 
       - name: Instalar dependencias
-        run: pip install mkdocs-material mkdocs-blogging-plugin
-
-      - name: Desplegar la documentación
-        run: mkdocs build --clean --verbose
-
-      - name: Desplegar la carpeta slides a Parte-2
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: Docu-mkdocs
-          publish_dir: .
-          destination_dir: docs/mkdocs
-          keep_files: true
-    
-      - name: Pull ultimos cambios
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pull
-
-      - name: Commit automático de documentación MkDocs
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Actualización de documentación MkDocs"
-          file_pattern: "docs/mkdocs/**"
+          pip install pdoc
+          
+      - name: Generar documentación Markdown con pdoc
+        run: |
+          pdoc --output-dir docs --format markdown markdown_modulo

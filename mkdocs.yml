@@ -1,9 +1,0 @@
-site_name: Mi Documentación
-site_author: Juanfu224
-site_url: https://juanfu224.github.io/2526_DAW_u1_action/
-nav:
-  - Inicio: index.md
-theme:
-  name: "material"
-repo_name: DAW_U1
-repo_url: https://github.com/Juanfu224/2526_DAW_u1_action
