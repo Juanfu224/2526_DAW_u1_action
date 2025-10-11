@@ -22,7 +22,7 @@ jobs:
           python-version: "3.12"
 
       - name: Instalar dependencias
-        run: sudo apt install python3-pytest
+        run: pip install pytest
 
       - name: Ejecutar script de tests y actualizar README
         run: python update_readme.py
@@ -99,4 +99,3 @@ jobs:
         with:
           commit_message: "Actualización de documentación MkDocs"
           file_pattern: "docs/mkdocs/**"
-    
