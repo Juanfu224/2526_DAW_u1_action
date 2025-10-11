@@ -62,7 +62,7 @@ jobs:
           file_pattern: "docs/**"
   
   # Job para generar y actualizar documentación MkDocs
-    actualizar-mkdocs:
+  actualizar-mkdocs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
