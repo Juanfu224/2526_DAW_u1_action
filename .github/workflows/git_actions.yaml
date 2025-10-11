@@ -83,8 +83,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: Parte-2
-          publish_dir: docs/mkdocs
+          publish_branch: Docu-mkdocs
+          publish_dir: .
           destination_dir: docs/mkdocs
           keep_files: true
     
