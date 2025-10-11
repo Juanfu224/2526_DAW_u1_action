@@ -73,5 +73,6 @@ jobs:
         run: pip install pdoc
 
       - name: Generar documentación con pdoc
-        run: pdoc --output-dir docs main
+        run: pdoc --output-dir docs 2526_DAW_U1_ACTION.main
+
 
