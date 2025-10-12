@@ -1,5 +1,5 @@
 # Mi Proyecto con GitHub Actions
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 #### ⚙️ Automatización e Integración
 - **`.github/workflows/git_actions.yaml`** → Define un **workflow de GitHub Actions** que ejecuta tareas automáticas (como tests o commits automáticos).
 
@@ -27,6 +27,19 @@ Cuando se hago un push en main el workflow ejecuta el script en Python. El scrip
 ❌ Tests fallidos
 
 ## 2º PARTE
+### Descripción general
+En este caso, para la generacion de la documentacion en HTML he utilizado Doxyfile, ya que es compatible con bastantes lenguajes de programacion, por lo que puede seguir utilizandose caso de que se siga expandiendo el proyecto.
+
+Ahora, para el markdown he elegido ydoc-markdown ya que no necesitas configuraciones complicadas como en Sphinx o Doxygen. Basta con un archivo de configuración (pydoc-markdown.yml) y un simple comando.
+
+
+### Estilo y herramientas de documentación
+- **Lenguaje:** Python  
+- **Estilo de documentación:** reStructuredText  
+- **Herramienta principal:** Doxygen, pydoc-markdown 
+- **Formatos generados:**
+  - 🌐 **HTML** → [Enlace a `docs/html/index.html`](./docs/html/index.html)
+  - 📄 **Markdown** → [Enlace a `docs/markdown.md`](./docs/markdown.md)
 
 
 
