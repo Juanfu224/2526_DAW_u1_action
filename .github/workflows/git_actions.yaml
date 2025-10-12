@@ -1,4 +1,4 @@
-name: CI + Doxygen + MkDocs
+name: CI + Docs (Doxygen + pdoc)
 
 on:
   push:
@@ -9,86 +9,43 @@ permissions:
   contents: write
 
 jobs:
-  # Job para ejecutar tests y actualizar README
-  actualizar-tests-readme:
+  build:
     runs-on: ubuntu-latest
     steps:
+      # Checkout del repositorio
       - name: Checkout del repositorio
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v4
 
+      # Configurar Python
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Instalar dependencias
-        run: pip install pytest
+      - name: Instalar dependencias Python, Pydoc y Doxygen
+        run: |
+          pip install pytest pydoc-markdown
+          sudo apt install -y doxygen graphviz
 
+      # Ejecutar tests y actualizar README
       - name: Ejecutar script de tests y actualizar README
         run: python update_readme.py
 
-      - name: Commit automático del README actualizado
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Actualización README con resultados de tests"
-          file_pattern: "README.md"
-
-  # Job para generar y actualizar documentación Doxygen
-  actualizar-docs-doxygen:
-    runs-on: ubuntu-latest
-    needs: actualizar-tests-readme
-    steps:
-      - name: Checkout del repositorio
-        uses: actions/checkout@v4
-
-      - name: Instalar Doxygen y Graphviz y TeX Live(para PDF)
-        run: |
-          sudo apt update
-          sudo apt install -y doxygen graphviz
-
+      # ------------------------------------------------------
+      #Generar documentación Doxygen
       - name: Generar documentación Doxygen
         run: doxygen docs/Doxyfile
 
-      - name: Pull ultimos cambios
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pull
-
-      - name: Commit automático de documentación de Doxygen
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Actualización documentación Doxygen"
-          file_pattern: "docs/html/**"
-
-  # Job para generar y actualizar documentación pdoc
-  actualizar-markdown:
-    runs-on: ubuntu-latest
-    needs: actualizar-docs-doxygen
-    steps:
-      - name: Checkout del repositorio
-        uses: actions/checkout@v4
-
-      - name: Configurar Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Instalar dependencias
-        run: pip install pydoc-markdown
-
-      - name: Generar documentación pdoc
+      #Generar documentación Markdown (pdoc)
+      - name: Generar documentación con pdoc
         run: pydoc-markdown
 
-      - name: Pull ultimos cambios
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pull
-
-      - name: Commit automático de documentación de pdoc
+      # ------------------------------------------------------
+      # Commit automático de todos los cambios
+      - name: Commit automático
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Actualización documentación Doxygen"
-          file_pattern: "docs/**"
-
+          commit_message: "Actualización automática: README, Doxygen y Markdown Docs"
+          file_pattern: |
+            README.md
+            docs/**
