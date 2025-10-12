@@ -62,10 +62,9 @@ jobs:
           file_pattern: "docs/html/**"
 
   # Job para generar y actualizar documentación pdoc
-  actualizar-docs-doxygen:
+  actualizar-markdown:
     runs-on: ubuntu-latest
-    needs: actualizar-tests-readme
-
+    needs: actualizar-docs-doxygen
     steps:
       - name: Checkout del repositorio
         uses: actions/checkout@v4
