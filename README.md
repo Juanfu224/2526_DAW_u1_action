@@ -33,7 +33,7 @@ En este caso, para la generacion de la documentacion en HTML he utilizado Doxyfi
 Ahora, para el markdown he elegido ydoc-markdown ya que no necesitas configuraciones complicadas como en Sphinx o Doxygen. Basta con un archivo de configuración (pydoc-markdown.yml) y un simple comando.
 
 
-### Estilo y herramientas de documentación
+### 1. Estilo y herramientas de documentación
 - **Lenguaje:** Python  
 - **Estilo de documentación:** reStructuredText  
 - **Herramienta principal:** Doxygen, pydoc-markdown 
@@ -42,11 +42,76 @@ Ahora, para el markdown he elegido ydoc-markdown ya que no necesitas configuraci
   - 📄 **Markdown** → [Enlace a `docs/markdown.md`](./docs/markdown.md)
 
 
+### 2. Ejemplo de código documentado usando el estilo reStructuredText
+Archivo: [`main.py`](./main.py)
+```
+def saludo(nombre: str) -> str:
+    """
+    Genera un saludo personalizado.
+
+    :param str nombre: El nombre de la persona a saludar.
+    :returns: Un saludo en forma de cadena que incluye el nombre proporcionado.
+    :rtype: str
+    """
+    return f"Hola, {nombre}!"
+```
+
+### 3. Generación de documentación local
+#### 3.1 Dependencias
+Para empezar a generar la documentacion en local, tenemos que instalar todo lo necesario para no tener ningun problema de dependencias de Python, Pydoc y Doxygen.
+```
+pip install pytest pydoc-markdown
+sudo apt install -y doxygen graphviz
+```
+
+#### 3.2 Generar configuracion
+Ahora tenemos que crear los archivos de configuracion para Doxygen y Pydoc.
+
+Para doxygen tenemos que ejecutar el siguiente comando en ./docs para generar alli el archivo Doxyfile y tener en esa carpeta toda la documentacio:
+```
+doxygen -g
+```
+Para Pydoc hay que crear un archivo llamado `pydoc-markdown.yml` en la raiz de nuestro documeto.
+```
+touch pydoc-markdown.yml
+```
+
+#### 3.3 Editar configuracion
+Ahora el archivo `docs/Doxyfile` lo tenemos que editar para tener una comfiguracion minima y funcional que nos sirva
+| Campo              | Descripción                                | Ejemplo           |
+| ------------------ | ------------------------------------------ | ----------------- |
+| `PROJECT_NAME`     | Nombre de tu proyecto                      | `"DAW_U1_ACTION"` |
+| `OUTPUT_DIRECTORY` | Carpeta donde se guardará la documentación | `./docs`          |
+| `INPUT`            | Rutas de los archivos del código fuente    | `.`               |
+| `RECURSIVE`        | Indica si buscar en subcarpetas            | `YES`             |
+| `GENERATE_HTML`    | Generar documentación en HTML              | `YES`             |
+| `GENERATE_LATEX`   | Generar documentación en PDF (opcional)    | `NO`              |
+
+En Pydoc hay que incluir las siguientes lineas en el archivo `pydoc-markdown.yml`:
+```
+loaders:
+  - type: python   # Tipo de loader: carga módulos de Python
+    search_path: ["."]  # Ruta donde buscar los módulos (aquí, la carpeta raíz)
+    modules:
+      - main          # Documenta el módulo main.py
+      - update_readme # Documenta el módulo update_readme.py
+      - test_main     # Documenta el módulo test_main.py
+
+renderer:
+  type: markdown        # Tipo de renderer: genera documentación en Markdown
+  filename: docs/markdown.md  # Archivo de salida donde se guardará la documentación
+```
+
+#### 3.4 Generar documentacion
+Para generar la documentacion de Doxygen y Pydoc a partir de los archivos de configuracion que hemos hecho, tenemos que ejecutar los siguientes comandos:
+```
+doxygen docs/Doxyfile
+pydoc-markdown
+```
+Esto generará una pagina web donde podremos ver el resultado en `./docs/html/index.html` y un markdown en `docs/markdown.md`
 
 
 ## Estado de los tests
-✅ 2025-10-12 11:16 Tests correctos
-
 ✅ 2025-10-12 10:25 Tests correctos
 
 ✅ 2025-10-12 01:02 Tests correctos
