@@ -58,9 +58,9 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Actualización documentación Doxygen"
-          file_pattern: "docs/**"
+          file_pattern: "docs/html/**"
 
-  # Job para generar y actualizar documentación MkDocs
+  # Job para generar y actualizar documentación pdoc
   actualizar-markdown:
     runs-on: ubuntu-latest
     steps:
@@ -70,9 +70,14 @@ jobs:
           python-version: "3.12"
 
       - name: Instalar dependencias
-        run: pip install pdoc
+        run: pip install pydoc-markdown
 
-      - name: Generar documentación con pdoc
-        run: pdoc --output-dir docs 2526_DAW_U1_ACTION.main
+      - name: Generar documentación pdoc
+        run: pydoc-markdown
 
+      - name: Commit automático de documentación de pdoc
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Actualización documentación Doxygen"
+          file_pattern: "docs/**"
 

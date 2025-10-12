@@ -1,0 +1,11 @@
+loaders:
+  - type: python
+    search_path: ["."]
+    modules:
+      - main
+      - update_readme
+      - test_main
+
+renderer:
+  type: markdown
+  filename: docs/API.md
