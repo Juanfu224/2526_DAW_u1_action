@@ -8,4 +8,4 @@ loaders:
 
 renderer:
   type: markdown
-  filename: docs/API.md
+  filename: docs/markdown.md
