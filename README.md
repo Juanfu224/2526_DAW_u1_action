@@ -135,6 +135,7 @@ on:
 
 
 ### 5. Evidencias y enlaces
+#### 5.1 Enlaces
 | Tipo                       | Descripción                      | Enlace                                                                     |
 | -------------------------- | -------------------------------- | -------------------------------------------------------------------------- |
 | 📂 Repositorio             | Enlace al proyecto completo      | [Repositorio GitHub](https://github.com/Juanfu224/2526_DAW_u1_action)                |
@@ -143,7 +144,8 @@ on:
 | ⚙️ Workflow                | Archivo YAML de automatización   | [.github/workflows/git_actions.yaml](./.github/workflows/git_actions.yaml) |
 | 🧪 Código documentado      | Ejemplo de función con docstring | [main.py](./main.py)                                                       |
 
-
+#### 5.2 Clave ssh configurada
+![Evidencia ssh](img/evidencia_ssh.png)
 
 ## Estado de los tests
 ✅ 2025-10-12 14:47 Tests correctos
