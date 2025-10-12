@@ -16,6 +16,10 @@
 - **`docs/html/`** → Contiene la documentación **HTML generada con Doxygen** a partir del **Doxyfile**.
 - **`docs/markdown.md`** → Documentación **Markdown generada automáticamente** con pydoc-markdown.
 
+#### 🧭 Clonar repositorio
+```
+git clone https://github.com/Juanfu224/2526_DAW_u1_action
+```
 ---
 
 ## 1º PARTE
@@ -110,10 +114,38 @@ pydoc-markdown
 ```
 Esto generará una pagina web donde podremos ver el resultado en `./docs/html/index.html` y un markdown en `docs/markdown.md`
 
+### 4. Flujo de GitHub Actions (Workflow)
+Se dispara al hacer un push de los cambios hechos en el repositorio en el archivo `.github/workflows/git_actions.yaml`
+```
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+```
+
+| Paso | Acción                                       | Descripción                                                                                                                                                      |
+| ---- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1️⃣   | Checkout del repositorio                     | Descarga todo el código del repositorio en el runner de GitHub Actions para poder trabajar sobre él.                                                             |
+| 2️⃣   | Configuración de Python                      | Configura la versión de Python necesaria (`3.12`) para poder ejecutar scripts y generar documentación.                                                           |
+| 3️⃣   | Instalación de dependencias                  | Instala las dependencias de Python (`pytest`, `pydoc-markdown`) y herramientas del sistema (`doxygen`, `graphviz`) necesarias para los tests y la documentación. |
+| 4️⃣   | Ejecutar script de tests y actualizar README | Ejecuta `update_readme.py` que corre los tests y actualiza el README con resultados o información actualizada del proyecto.                                      |
+| 5️⃣   | Generar documentación Doxygen                | Ejecuta `doxygen` usando `docs/Doxyfile` para crear documentación técnica de tu código en formato HTML u otros formatos configurados en Doxyfile.                |
+| 6️⃣   | Generar documentación con pdoc               | Genera documentación en Markdown usando `pydoc-markdown`, ideal para archivos legibles directamente en GitHub.                                                   |
+| 7️⃣   | Commit automático                            | Guarda todos los cambios generados (`README.md` y `docs/**`) usando `git-auto-commit-action` con un mensaje estándar de actualización automática.                |
+
+
+### 5. Evidencias y enlaces
+| Tipo                       | Descripción                      | Enlace                                                                     |
+| -------------------------- | -------------------------------- | -------------------------------------------------------------------------- |
+| 📂 Repositorio             | Enlace al proyecto completo      | [Repositorio GitHub](https://github.com/Juanfu224/2526_DAW_u1_action)                |
+| 🌐 Documentación HTML      | Generada automáticamente         | [docs/html/index.html](./docs/html/index.html)                             |
+| 📄 Documentación adicional | Markdown o PDF                   | [docs/markdown.md](./docs/markdown.md)                                     |
+| ⚙️ Workflow                | Archivo YAML de automatización   | [.github/workflows/git_actions.yaml](./.github/workflows/git_actions.yaml) |
+| 🧪 Código documentado      | Ejemplo de función con docstring | [main.py](./main.py)                                                       |
+
+
 
 ## Estado de los tests
-✅ 2025-10-12 12:28 Tests correctos
-
 ✅ 2025-10-12 12:13 Tests correctos
 
 ✅ 2025-10-12 10:25 Tests correctos
